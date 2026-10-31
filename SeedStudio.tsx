@@ -1,0 +1,56 @@
+import React,{useEffect,useRef,useState} from 'react';
+import {View,Image,ActivityIndicator} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as ImagePicker from 'expo-image-picker';
+import {api} from './api';
+import {selectPhoto} from './photoSelection';
+import {C,T,H,Button,Card,Field,Chip,Badge} from './ui';
+import {emptySeedDraft,growingMethods,seedPayloads,SeedDraft,SeedPacket,SeedProject} from './seedProject';
+type Photo={uri:string;data:string;mediaId?:string};
+const row={flexDirection:'row',flexWrap:'wrap',gap:10} as const;
+export default function SeedStudio({ownerId,onPlants}:{ownerId:string;onPlants:()=>void}){
+ const [projects,setProjects]=useState<SeedProject[]>([]),[selected,setSelected]=useState<SeedProject|null>(null),[packet,setPacket]=useState<SeedPacket|null>(null);
+ const [draft,setDraft]=useState<SeedDraft>({...emptySeedDraft}),[creating,setCreating]=useState(false),[loading,setLoading]=useState(true),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState('');
+ const [photos,setPhotos]=useState<{front?:Photo;back?:Photo}>({}),[detailReady,setDetailReady]=useState(false);
+ const pendingSave=useRef<any>(null);
+ const requestKey=useRef('seed-'+Date.now()+'-'+Math.random().toString(36).slice(2));const locked=useRef(false),alive=useRef(true),writes=useRef(Promise.resolve());const key='sproutly.seedDraft.'+ownerId;
+ useEffect(()=>{alive.current=true;return()=>{alive.current=false}},[]);
+ const refresh=async()=>{const records=await api<SeedProject[]>('/seed-projects');if(alive.current)setProjects(records)};
+ useEffect(()=>{let active=true;(async()=>{try{const saved=await AsyncStorage.getItem(key);if(saved&&active){const parsed=JSON.parse(saved);setDraft({...emptySeedDraft,...parsed.draft});if(parsed.requestKey)requestKey.current=parsed.requestKey;pendingSave.current=parsed.pendingSave||null;setCreating(true)}await refresh()}catch(e){if(active)setError(e instanceof Error?e.message:'Seed projects could not load.')}finally{if(active){setLoading(false);setReady(true)}}})();return()=>{active=false}},[key]);
+ useEffect(()=>{if(!ready)return;const saved=creating?JSON.stringify({draft,requestKey:requestKey.current,pendingSave:pendingSave.current}):null;writes.current=writes.current.catch(()=>{}).then(()=>saved?AsyncStorage.setItem(key,saved):AsyncStorage.removeItem(key));},[draft,creating,ready,key]);
+ const run=async(action:()=>Promise<void>)=>{if(locked.current)return;locked.current=true;setBusy(true);setError('');try{await action()}catch(e){if(alive.current)setError(e instanceof Error?e.message:'Please retry.')}finally{locked.current=false;if(alive.current)setBusy(false)}};
+ const field=(k:keyof SeedDraft,label:string,placeholder='',multiline=false)=><Field label={label} value={draft[k]} onChangeText={(v:string)=>{pendingSave.current=null;requestKey.current='seed-'+Date.now()+'-'+Math.random().toString(36).slice(2);setDraft(d=>({...d,[k]:v}))}} placeholder={placeholder} multiline={multiline} editable={!busy} maxLength={k==='instructions'?10000:200} autoCapitalize={k==='sowingDate'?'none':'sentences'}/>;
+ const openProject=(project:SeedProject)=>run(async()=>{setDetailReady(false);setSelected(project);setPacket(null);const fresh=await api<SeedProject>('/seed-projects/'+project.id);const p=fresh.packetId?await api<SeedPacket>('/seed-packets/'+fresh.packetId):null;if(alive.current){setSelected(fresh);setPacket(p);setDetailReady(true)}});
+ const choose=(side:'front'|'back',camera:boolean)=>run(async()=>{const photo=await selectPhoto(ImagePicker,camera);if(photo){pendingSave.current=null;requestKey.current='seed-'+Date.now()+'-'+Math.random().toString(36).slice(2);setPhotos(p=>({...p,[side]:photo}))}});
+ const save=()=>run(async()=>{
+  const payload=seedPayloads(draft);const mediaIds:string[]=[];
+  // Cache each successful upload so retrying a later step does not upload it again.
+  for(const side of ['front','back'] as const){const photo=photos[side];if(photo){if(!photo.mediaId){photo.mediaId=(await api('/media','POST',{data:photo.data})).id;setPhotos(p=>({...p,[side]:{...photo}}))}mediaIds.push(photo.mediaId!)}}
+  const body={packet:{...payload.packet,...(mediaIds.length?{mediaIds}:{}),sources:[{type:'packet',label:'Customer-entered packet information; not independently verified'}]},project:{...payload.project,stage:'planned'}};
+  const requestBody=pendingSave.current||body;pendingSave.current=requestBody;
+  await writes.current.catch(()=>{});await AsyncStorage.setItem(key,JSON.stringify({draft,requestKey:requestKey.current,pendingSave:requestBody}));
+  const result=await api<{packet:SeedPacket;project:SeedProject}>('/seed-projects/from-packet','POST',requestBody,{'Idempotency-Key':requestKey.current});
+  const {packet:p,project}=result;
+  if(alive.current){setProjects(list=>[project,...list]);setSelected(project);setPacket(p);setDetailReady(true);setCreating(false);setDraft({...emptySeedDraft});setPhotos({});pendingSave.current=null;requestKey.current='seed-'+Date.now()+'-'+Math.random().toString(36).slice(2)}
+  await writes.current.catch(()=>{});await AsyncStorage.removeItem(key);
+ });
+ let content;
+ if(loading)content=<Card><ActivityIndicator color={C.forest}/><T>Opening Seed Studio…</T></Card>;
+ else if(creating)content=<Card><Badge>NEW SEED PROJECT</Badge><H>Start with a little seed.</H><T style={{color:C.muted}}>Enter what you know. Variety, brand, photos, and date are optional. Packet scanning and personalized plans are coming in the next phases.</T>
+  {field('name','Seed or project name','For example, kitchen basil')}{field('variety','Variety (optional)','Genovese')}{field('brand','Seed company (optional)')}
+  <T>How will you grow?</T><View style={row}>{growingMethods.map(([value,label])=><Chip key={value} selected={draft.growingMethod===value} onPress={()=>{if(!busy){pendingSave.current=null;requestKey.current='seed-'+Date.now()+'-'+Math.random().toString(36).slice(2);setDraft(d=>({...d,growingMethod:value}))}}}>{label}</Chip>)}</View>
+  {field('sowingDate','Intended sowing date (optional)','YYYY-MM-DD')}{field('instructions','Packet instructions or notes (optional)','Copy the instructions you want to keep.',true)}
+  <H style={{fontSize:20}}>Keep your packet photos</H><T style={{fontSize:13,color:C.muted}}>Optional front and back photos are saved privately when you save the project. They are not sent for AI processing in this step. Unsaved photo selections stay only on this screen.</T>
+  {(['front','back'] as const).map(side=><View key={side} style={{gap:12,borderWidth:1,borderColor:C.border,borderRadius:16,padding:16,overflow:'hidden'}}><T>{side==='front'?'Front of packet':'Back of packet'}</T>{photos[side]&&<Image accessibilityLabel={side+' packet preview'} source={{uri:photos[side]!.uri}} resizeMode="contain" style={{width:'100%',height:180,backgroundColor:C.pale,borderRadius:12}}/>}<View style={row}><Button secondary disabled={busy} onPress={()=>choose(side,false)}>{photos[side]?'Replace':'Upload'} {side} photo</Button><Button secondary disabled={busy} onPress={()=>choose(side,true)}>Use camera for {side}</Button></View></View>)}
+  {error&&<T accessibilityRole="alert" style={{color:C.error}}>{error}</T>}
+  <T style={{fontSize:12,color:C.muted}}>Text drafts are saved on this device while signed in. Saving creates a private project in your account.</T>
+  <Button disabled={busy||!ready} onPress={save}>{busy?'Saving your seed project…':'Save seed project'}</Button><Button secondary disabled={busy} onPress={()=>{setCreating(false);setDraft({...emptySeedDraft});setPhotos({});pendingSave.current=null;requestKey.current='seed-'+Date.now()+'-'+Math.random().toString(36).slice(2);setError('')}}>Discard draft</Button>
+ </Card>;
+ else if(selected)content=<><Button secondary disabled={busy} onPress={()=>{setSelected(null);setPacket(null);setError('')}}>Back to seed projects</Button><Card><Badge>{(selected.stage||'planned').replaceAll('-',' ')}</Badge><H>{selected.name}</H>{!detailReady?<><T>{busy?'Loading saved project…':'Project details could not load.'}</T>{error&&<T accessibilityRole="alert" style={{color:C.error}}>{error}</T>}<Button secondary disabled={busy} onPress={()=>openProject(selected)}>Retry project details</Button></>:<><T>Growing method: {growingMethods.find(([id])=>id===selected.growingMethod)?.[1]||'Not specified'}</T><T>Sowing date: {selected.sowingDate||'Not set'}</T>{packet&&<><H style={{fontSize:20}}>Your seed packet</H><T>{packet.name}{packet.variety?' · '+packet.variety:''}</T>{packet.brand&&<T>Seed company: {packet.brand}</T>}{packet.instructions&&<T selectable>{packet.instructions}</T>}{packet.mediaIds?.map((id,index)=><SavedPacketPhoto key={id} id={id} label={'Saved packet photo '+(index+1)}/>)}</>}<T style={{fontSize:12,color:C.muted}}>Saved privately · Last updated {new Date(selected.updated).toLocaleDateString()}</T><Card style={{backgroundColor:C.pale,padding:16}}><H style={{fontSize:18}}>Your growing journey starts here.</H><T>Packet extraction, personalized grow plans, and germination milestones will be added in the next phases. Your saved information will stay linked to this project.</T></Card></>}</Card></>;
+ else content=<><View style={row}><Button icon="plus" disabled={busy} onPress={()=>{setCreating(true);setError('')}}>Start a seed project</Button><Button secondary disabled={busy} onPress={()=>run(refresh)}>Refresh projects</Button></View>{error&&<T accessibilityRole="alert" style={{color:C.error}}>{error}</T>}{projects.length?projects.map(project=><Card key={project.id}><Badge>{(project.stage||'planned').replaceAll('-',' ')}</Badge><H style={{fontSize:22}}>{project.name}</H><T>{growingMethods.find(([id])=>id===project.growingMethod)?.[1]||'Growing method not set'}{project.sowingDate?' · Sow '+project.sowingDate:''}</T><Button secondary disabled={busy} onPress={()=>openProject(project)}>Open {project.name}</Button></Card>):<Card><H>A whole garden starts with one seed.</H><T>Keep your seed details and packet photos together. Create your first private seed project to begin.</T></Card>}</>;
+ return <View style={{gap:18}}><View style={row}><Chip selected={false} onPress={onPlants}>Plants</Chip><Chip selected>Seed Studio</Chip></View><H>Seed Studio</H>{content}</View>;
+}
+function SavedPacketPhoto({id,label}:{id:string;label:string}){
+ const [uri,setUri]=useState(''),[error,setError]=useState('');useEffect(()=>{let active=true;api('/media/'+id).then(r=>{if(active)setUri(r.data)}).catch(()=>{if(active)setError('This packet photo could not load. Reopen the project to retry.')});return()=>{active=false}},[id]);
+ return uri?<Image accessibilityLabel={label} source={{uri}} resizeMode="contain" style={{width:'100%',height:220,borderRadius:14,backgroundColor:C.pale}}/>:<T style={{color:error?C.error:C.muted}}>{error||'Loading packet photo…'}</T>;
+}

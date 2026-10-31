@@ -10,7 +10,7 @@
     "ios": "expo run:ios",
     "build": "expo export --platform web && node pwa-build.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "node --test photoSelection.test.mjs reminderPlan.test.mjs"
+    "test": "node --test photoSelection.test.mjs reminderPlan.test.mjs seedProject.test.mjs"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.4.2",
@@ -32,3 +32,4 @@
     "@types/react": "~19.2.0"
   }
 }
+
