@@ -1,5 +1,10 @@
 node_modules/
 dist/
+android/
+ios/
 .expo/
-.env
-*.log
+*.jks
+*.keystore
+*.p12
+credentials.json
+.env*

@@ -1,1 +1,37 @@
-{"expo":{"name":"Sproutly","slug":"sproutly","version":"0.1.0","orientation":"default","userInterfaceStyle":"light","web":{"bundler":"metro","output":"single","name":"Sproutly — From seed to flourishing"},"ios":{"supportsTablet":true,"bundleIdentifier":"com.alambda.sproutly"},"android":{"package":"com.alambda.sproutly"},"plugins":[["expo-image-picker",{"photosPermission":"Choose plant photos for your private growing journal.","cameraPermission":"Photograph your plant for a care assessment."}]]}}
+{
+  "expo": {
+    "name": "Sproutly",
+    "slug": "sproutly",
+    "version": "0.1.0",
+    "orientation": "default",
+    "userInterfaceStyle": "light",
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "name": "Sproutly \u2014 From seed to flourishing"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.alambda.sproutly"
+    },
+    "android": {
+      "package": "com.alambda.sproutly",
+      "versionCode": 1,
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.SYSTEM_ALERT_WINDOW"
+      ],
+      "allowBackup": false
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Choose plant photos for your private growing journal.",
+          "cameraPermission": "Photograph your plant for a care assessment."
+        }
+      ]
+    ],
+    "icon": "./icon-512.png"
+  }
+}
