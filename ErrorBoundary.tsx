@@ -1,0 +1,5 @@
+import React from 'react';import {View,Text,Pressable} from 'react-native';
+export default class ErrorBoundary extends React.Component<React.PropsWithChildren,{failed:boolean}>{
+ state={failed:false};static getDerivedStateFromError(){return{failed:true}}componentDidCatch(){console.error('sproutly_render_failed')}
+ render(){if(this.state.failed)return <View style={{flex:1,justifyContent:'center',padding:28,backgroundColor:'#F8F5EC',gap:18}}><Text accessibilityRole="header" style={{fontSize:24,color:'#173F35'}}>Let’s reopen your garden.</Text><Text style={{fontSize:16,color:'#173F35'}}>This screen could not load. Your saved garden records remain on the server. If the problem continues, contact Sproutly support from your profile.</Text><Pressable accessibilityRole="button" onPress={()=>this.setState({failed:false})} style={{padding:18,backgroundColor:'#173F35',borderRadius:24}}><Text style={{color:'white',textAlign:'center'}}>Try again</Text></Pressable></View>;return this.props.children}
+}
