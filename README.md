@@ -1,32 +1,31 @@
 # Sproutly frontend
-Expo SDK 55, React Native, React Native Web and TypeScript. Real API-driven forms and screens using the Sproutly garden-first flow, Manrope headings, Inter body text and the forest/cream brand palette.
 
-## Run
-1. `npm ci`
-2. Set `EXPO_PUBLIC_API_URL=http://localhost:3001` (or the deployed backend HTTPS origin).
-3. `npm run web` for browser development; `npm run android` or `npm run ios` for Expo device development.
-4. `npm run typecheck` and `npm run build` (exports web assets to `dist`).
+Universal Expo SDK 55 / React Native / React Native Web app with TypeScript. The existing framework, forest/cream palette, Manrope headings and Inter body text are retained.
 
-Render static site: build `npm ci --include=dev && npm run typecheck && npm run build`; publish `dist`. API URL is a public build-time configuration value. Set it before building; never place a secret in an EXPO_PUBLIC variable. Navigation is application state on the root URL, so no server path rewrites are required.
+## Run and verify
 
-## Working flows
-Demo entry and real register/login/logout; garden creation/edit/removal; image selection and camera capture; authenticated photo uploads; journal entries/edit/delete; editable reminders with complete/snooze; OpenAI photo assessments saved to journal; factual editable private stories with optional platform share sheet; catalog/search/filter; basket and server-priced demo checkout; order cancellation, fulfillment and refund workflow; provider applications/listing inventory; admin review/moderation/audit.
+```sh
+npm ci --include=dev
+npm run typecheck
+npm test
+EXPO_PUBLIC_API_URL=http://localhost:3001 npm run web
+npm run build
+```
 
-The seed data is fake. Saving is real and goes through the API; there is no local fake response fallback. The API's demo accounts isolate every visitor's sample garden, catalog and administrative workspace. Email and payment integrations are disconnected. Photo analysis requires the user to confirm transfer of the photo and care context to OpenAI by selecting Analyze. Assessments analyze uploaded images through the backend OpenAI integration; the app displays uncertainty and asks for better photos when needed. Reminder delivery is in-app only. No card numbers are collected.
+Render builds with `npm ci --include=dev && npm run typecheck && npm run build` and publishes `dist`. Set the public HTTPS API origin through `EXPO_PUBLIC_API_URL` before building. Never put a service secret in an `EXPO_PUBLIC_` variable.
 
-## Mobile path
-Uses React Native View/Text/Pressable/Image/ScrollView, react-native-svg and expo-image-picker. Native builds have not been compiled or device-tested. Before store release, add production identity, secure credential storage, navigation/deep links, safe-area handling, real notifications and payment integration, privacy flows, and device QA.
+## Working pilot features
 
-## Assets
-`garden-hero.png` was generated with the built-in image generation tool: warm daylight, basil/monstera/sprout in ceramic and terracotta pots on the right, cream wall negative space on the left; no text or logo. Plant cards use code-native sample botanical illustrations. The header uses text branding pending the approved vector logo master.
+Account and isolated demo entry; private plants, photos, journal and care reminders; reviewed seed packet scanning and manual Seed Studio; real API grow plans and milestones; linked seed-to-plant history; plant/project Doctor conversations; explicitly confirmed reminder/note actions; 14-day rescue plans and photo follow-ups; tentative identification alternatives and corrections; optional voice transcription and device speech; account export/deletion; pilot privacy/help and operations.
 
+Android sessions use SecureStore, migrating any previous local session. Website sessions retain the existing browser storage behavior. Native care reminders are opt-in and sync on app opening and changes; delivery depends on OS settings. Camera, microphone and notifications require physical-device acceptance.
 
-The marketplace includes 24 sample offers and a separate live GBIF reference search. Botanical records have source links and are not presented as inventory. Seed/supplier checkout remains simulated.
+Native subscription UI uses actual RevenueCat offerings and store price strings only after project, keys and products are configured. Purchase/restore/manage paths are prepared; no payment or trial begins merely by viewing Membership. Current deployment provides pilot access, not a paid subscription. Optional public native SDK keys: `EXPO_PUBLIC_REVENUECAT_ANDROID_KEY` and `EXPO_PUBLIC_REVENUECAT_IOS_KEY`.
 
-## Demo photos and live merchant search
-Demo basil, monstera, tomato seedlings, and seed assortment cards use bundled 1254×1254 AI-generated assets, explicitly labeled as illustrations. User-uploaded photos retain priority. Other species retain generic art rather than mislabeling a generated basil photo. The separate Real seed & plant shop tab reads the backend merchant search endpoint and opens merchant checkout externally. Merchant cards use merchant photographs, not generated demo imagery. No real product can be added to the demo basket.
+Sample marketplace prices, sellers and orders are simulated. The separate live merchant catalog links to merchant checkout and does not create a Sproutly purchase. AI-generated demo plant images are labeled; uploaded photos retain priority. Future Shop is post-launch work.
 
-The merchant product page showed a seasonal ordering pause through early December when checked October 30, 2026. A dated notice is displayed separately from the live catalog stock fields; merchant catalog stock is not a guarantee of checkout availability.
+## Releases and remaining gates
 
-## Plant Doctor mobile form
-The main scroll viewport and bottom navigation occupy separate layout rows. Web safe-area padding and visual-viewport resize handling keep form actions clear of browser keyboards; native builds use KeyboardAvoidingView. Photo previews use contain mode in a bounded 210px area. Back/Continue and canceled or denied photo selection preserve the current care draft and prior image. `npm test` covers picker routing, metadata exclusion, cancellation, permission denial, and invalid images. Browser checks cover 360px width, 420px reduced height, full-height restoration, upload/capture inputs, and draft retention. Physical Android/iOS camera hardware and soft-keyboard acceptance remain required; reduced-height desktop browser checks do not substitute for them.
+`node android-release.mjs` builds a signed native APK using external signing environment variables. Never commit signing material. The website download button points to a published release asset; Android retains control over install permissions and confirmation. See ANDROID_RELEASE.md and IOS_RELEASE.md.
+
+See TECHNICAL_BOARD.md for tested phase acceptance and open launch gates. Real-packet accuracy, longitudinal rescue results, physical devices, store billing, verified email, offsite recovery, final public policies and external monitoring are not certified by a successful build.

@@ -1,19 +1,34 @@
-# Sproutly Android pilot APK
+# Sproutly Android 0.1.2 pilot
 
-Native Expo/React Native release, package `com.alambda.sproutly`, version 0.1.1, versionCode 2. Uses the live HTTPS Sproutly API. The APK includes the JavaScript bundle and doesn't require Expo Go or a development server. Internet is required for account data, photos, analysis and marketplace requests.
+Native Expo/React Native release, package `com.alambda.sproutly`, version 0.1.2, versionCode 3. Uses the live HTTPS API and an embedded release JavaScript bundle. Expo Go is not required. Internet is required for account data and AI services.
+
+## Verified artifact
+
+- Size: 57,992,497 bytes.
+- APK SHA-256: `da869be0082411a1b441323df364731d45ca1b7ba825645701057366dc9eeb85`.
+- Signing certificate SHA-256: `9fc8d7beb48216a0810a84d46076b856f2930c77f03152d0786a13dca4dcf0fb`, matching the independently downloaded 0.1.1 APK.
+- APK signature verifies; version code is higher than 0.1.1. Package ID is unchanged.
+- ARM64 and ARM32 phone ABIs (`arm64-v8a`, `armeabi-v7a`). Minimum API 24; target API 36.
+- 16 KB ZIP alignment check passes. Microphone permission is present; SYSTEM_ALERT_WINDOW is excluded; backup is disabled.
+- Release bundle includes the production API origin, growing plans, updated rescue guidance and secure native session storage.
+
+## Features
+
+Includes reviewed Seed Studio scanning, grow plans and dated milestones, seed-to-plant linking, persistent Doctor conversations with explicitly confirmed app actions, rescue follow-ups, voice transcription/device speech, tentative identification alternatives, private export/deletion and opt-in device reminders. Store purchasing remains unconfigured pilot access; no trial or live physical-commerce charge is enabled.
 
 ## Rebuilding
 
-Install dependencies with `npm ci --include=dev`. Install JDK 17 and the Android SDK/NDK required by Expo SDK 55. Set `ANDROID_HOME`, `JAVA_HOME`, `SPROUTLY_KEYSTORE_PATH`, `SPROUTLY_STORE_PASSWORD`, and `SPROUTLY_KEY_PASSWORD` in the build environment. The key alias is `sproutly-release`.
+```sh
+npm ci --include=dev
+node android-release.mjs
+```
 
-Run `node android-release.mjs` from the repository root. The signed APK is produced under `android/app/build/outputs/apk/release/`. Use `apksigner verify --verbose --print-certs` to verify it. Never publish signing keys or passwords. The owner has a private recovery archive; it is separate from public source and downloads.
+Install JDK 17 and the Android SDK/NDK required by Expo SDK 55. Set `ANDROID_HOME`, `JAVA_HOME`, `SPROUTLY_KEYSTORE_PATH`, `SPROUTLY_STORE_PASSWORD` and `SPROUTLY_KEY_PASSWORD`. The alias is `sproutly-release`. Signing material must stay outside the repository. Use the same key and increase versionCode for every update. Verify the output using `apksigner verify --verbose --print-certs` and compare SHA-256 after public download.
 
-Use the same release key and increase `android.versionCode` for future updates. An APK signed with a different key won't replace an existing installation.
+## Acceptance still required
 
-## Pilot acceptance
+The APK is a pilot, not physical-device certification. Test install/update, cold launch, account/session migration, Android Back, denied permissions, camera/photo selection and cancellation, soft keyboard/safe areas, real microphone/voice interruptions and notification delivery with battery/reboot conditions on a physical Android phone.
 
-Static checks and signature verification don't certify physical-device behavior. Test installation, cold launch, account login, Android Back, camera/upload cancellation and denied permissions, photo assessment, journal persistence, keyboard/safe areas and app update on a physical Android device before treating this as a production release.
+The website downloads the APK. Android controls installation permission and final confirmation. Website code cannot bypass those controls. The nearest 60 future unfinished reminders are scheduled after opt-in; cross-device changes sync when the app is opened. No remote push provider is configured.
 
-The website downloads the APK. Android may ask the user to allow installation from Chrome and must show a final installation confirmation. Website code cannot bypass those confirmations.
-
-Version 0.1.1 adds opt-in local device reminders. Scheduling updates after save, completion, snooze and account reload; logout cancels Sproutly schedules. Android may delay alerts under battery restrictions. Only the nearest 60 future unfinished tasks are scheduled. Cross-device changes sync when the app is opened. No remote push service is configured.
+See TECHNICAL_BOARD.md for the remaining store, provider, evaluation and launch gates.

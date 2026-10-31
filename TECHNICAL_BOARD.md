@@ -18,13 +18,13 @@ The existing Expo / React Native / Node / SQLite framework is retained. This boa
 ## Verified in this release
 
 - 41 backend automated tests and 9 frontend tests pass; TypeScript and production web export pass.
-- Backend deployed commit `dd2ede988a3f00906ba5143eca4a890d1ab6ddc1`; frontend `fe7e825005b30510c693fd4d2ebf77bcd3b5a9df`. Both Render deploys reached live.
+- Backend deployed commit `dd2ede988a3f00906ba5143eca4a890d1ab6ddc1`; frontend `fe7e825005b30510c693fd4d2ebf77bcd3b5a9df`. Both Render deploys reached live. Native refinements are committed in frontend `97c3536054bf3f94f2eb23d514aea5b30b33f287`; final website download-link deployment follows APK publication.
 - Real deployed OpenAI grow plan: five steps, confirmed numeric germination range; actual sowing milestone and replay-safe linked plant conversion.
 - Real deployed Doctor conversation preserves user/assistant history; browser-tested proposal creates a reminder only after explicit click.
 - Real deployed OpenAI rescue plan completed. Synthetic audio fixture transcribed accurately by `gpt-transcribe` and returned recordingStored:false. This does not prove hardware recording quality.
 - Real Open-Meteo demo forecast returned seven attributed days. No commercial weather subscription was purchased.
 - Cross-account project access rejected; private export excludes credentials; account deletion and password reauthentication tested using isolated disposable test databases.
-- Existing pilot records survived deployment. Current APK remains 0.1.1 until signed 0.1.2 is built, verified and published; build success alone is not device acceptance.
+- Existing pilot records survived deployment. Android 0.1.2 (versionCode 3) built and passed signature, same-certificate, manifest, two-ABI and 16 KB ZIP alignment checks. Public publication/download verification follows this build checkpoint; physical-device acceptance remains open.
 
 ## Launch gates — still open
 
@@ -34,6 +34,6 @@ The existing Expo / React Native / Node / SQLite framework is retained. This boa
 4. Physical Android install/update, cold launch, soft keyboard, camera, microphone, Android Back, permission denial, local notification and battery/reboot behavior. No physical device is connected here.
 5. Apple Developer/Expo project signing and an iPhone. Linux prebuild is not a signed iOS release.
 6. Real packet corpus, botanical identification/diagnosis evaluations, real rescue follow-up study, accessibility review and beta approval.
-7. Final terms/privacy/retention and store disclosure review; external crash and availability alert destination. Optional REQUEST_METRICS logs request IDs/status/latency without bodies, coordinates, tokens or paths.
+7. Final terms/privacy/retention and store disclosure review; external crash and availability alert destination. Active REQUEST_METRICS logs request IDs/status/latency without bodies, coordinates, tokens or paths.
 
 Physical-commerce payments/payouts remain separate and simulated. Future Shop is post-launch and feature-flagged work, not a requirement for this care-feature release. No live charges, seller onboarding, commission, paid external plan or store submission was enabled.
