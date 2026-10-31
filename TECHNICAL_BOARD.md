@@ -17,14 +17,14 @@ The existing Expo / React Native / Node / SQLite framework is retained. This boa
 
 ## Verified in this release
 
-- 41 backend automated tests and 9 frontend tests pass; TypeScript and production web export pass.
-- Backend deployed commit `dd2ede988a3f00906ba5143eca4a890d1ab6ddc1`; frontend `fe7e825005b30510c693fd4d2ebf77bcd3b5a9df`. Both Render deploys reached live. Native refinements are committed in frontend `97c3536054bf3f94f2eb23d514aea5b30b33f287`; signed release tag `v0.1.2-android-pilot` points to source `79126558ad2594882d4879c29825c4bffdb33947`. The website download link now targets 0.1.2.
+- 42 backend automated tests and 9 frontend tests pass; TypeScript and production web export pass.
+- Initial feature deployments reached live. Final website deployment `055e1c1ab6715e01d2f3f6604844ffaaf2cc161b` is live. Final API safeguards are in `46339b013b7c3eed0af3732284b12493ed529e7a`, and the Render rollout reached live. Native refinements are committed in frontend `97c3536054bf3f94f2eb23d514aea5b30b33f287`; signed release tag `v0.1.2-android-pilot` points to source `79126558ad2594882d4879c29825c4bffdb33947`. The live website top button targets 0.1.2. Clicking it initiated an APK download that the cloud browser canceled; a physical Android browser download/install remains unverified. Independent public HTTP download and signature verification passed.
 - Real deployed OpenAI grow plan: five steps, confirmed numeric germination range; actual sowing milestone and replay-safe linked plant conversion.
 - Real deployed Doctor conversation preserves user/assistant history; browser-tested proposal creates a reminder only after explicit click.
 - Real deployed OpenAI rescue plan completed. Synthetic audio fixture transcribed accurately by `gpt-transcribe` and returned recordingStored:false. This does not prove hardware recording quality.
 - Real Open-Meteo demo forecast returned seven attributed days. No commercial weather subscription was purchased.
 - Cross-account project access rejected; private export excludes credentials; account deletion and password reauthentication tested using isolated disposable test databases. A disposable live demo account was exported and deleted, and its old session was rejected. Browser data export downloaded valid credential-free JSON.
-- Existing pilot records survived deployment. Android 0.1.2 (versionCode 3) built and passed signature, same-certificate, manifest, two-ABI and 16 KB ZIP alignment checks. Published at GitHub Releases. Independently downloaded public bytes exactly match the local signed artifact (SHA-256 `da869be0082411a1b441323df364731d45ca1b7ba825645701057366dc9eeb85`); the public APK signature verifies. Physical-device acceptance remains open.
+- Existing pilot records survived deployment. Android 0.1.2 (versionCode 3) built and passed signature, same-certificate, manifest, two-ABI and 16 KB ZIP alignment checks. All 16 packaged ARM64 shared libraries also passed the 16 KB ELF LOAD-segment alignment inspection. Published at GitHub Releases. Independently downloaded public bytes exactly match the local signed artifact (SHA-256 `da869be0082411a1b441323df364731d45ca1b7ba825645701057366dc9eeb85`); the public APK signature verifies. Physical-device acceptance remains open.
 
 ## Launch gates — still open
 
@@ -39,3 +39,5 @@ The existing Expo / React Native / Node / SQLite framework is retained. This boa
 Physical-commerce payments/payouts remain separate and simulated. Future Shop is post-launch and feature-flagged work, not a requirement for this care-feature release. No live charges, seller onboarding, commission, paid external plan or store submission was enabled.
 
 Release verification: API request timing logs are active in Render and inspected for status/duration without request content. Updated iOS project generation passes; no signed iOS binary or physical device test is claimed. Android ADB inventory is empty. The downloadable release is a pilot, with launch gates above still open.
+
+Final API regression checks cover the transition from free pilot to enforced plant limits, rescue history deletion protection, and completion of outstanding rescue checkpoint reminders. No new APK is required for these server-side safeguards.
