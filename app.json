@@ -2,7 +2,7 @@
   "expo": {
     "name": "Sproutly",
     "slug": "sproutly",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "orientation": "default",
     "userInterfaceStyle": "light",
     "web": {
@@ -16,7 +16,7 @@
     },
     "android": {
       "package": "com.alambda.sproutly",
-      "versionCode": 1,
+      "versionCode": 2,
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO",
         "android.permission.SYSTEM_ALERT_WINDOW"
@@ -30,7 +30,8 @@
           "photosPermission": "Choose plant photos for your private growing journal.",
           "cameraPermission": "Photograph your plant for a care assessment."
         }
-      ]
+      ],
+      "expo-notifications"
     ],
     "icon": "./icon-512.png"
   }

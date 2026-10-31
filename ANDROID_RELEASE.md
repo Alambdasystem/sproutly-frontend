@@ -1,6 +1,6 @@
 # Sproutly Android pilot APK
 
-Native Expo/React Native release, package `com.alambda.sproutly`, version 0.1.0, versionCode 1. Uses the live HTTPS Sproutly API. The APK includes the JavaScript bundle and doesn't require Expo Go or a development server. Internet is required for account data, photos, analysis and marketplace requests.
+Native Expo/React Native release, package `com.alambda.sproutly`, version 0.1.1, versionCode 2. Uses the live HTTPS Sproutly API. The APK includes the JavaScript bundle and doesn't require Expo Go or a development server. Internet is required for account data, photos, analysis and marketplace requests.
 
 ## Rebuilding
 
@@ -15,3 +15,5 @@ Use the same release key and increase `android.versionCode` for future updates. 
 Static checks and signature verification don't certify physical-device behavior. Test installation, cold launch, account login, Android Back, camera/upload cancellation and denied permissions, photo assessment, journal persistence, keyboard/safe areas and app update on a physical Android device before treating this as a production release.
 
 The website downloads the APK. Android may ask the user to allow installation from Chrome and must show a final installation confirmation. Website code cannot bypass those confirmations.
+
+Version 0.1.1 adds opt-in local device reminders. Scheduling updates after save, completion, snooze and account reload; logout cancels Sproutly schedules. Android may delay alerts under battery restrictions. Only the nearest 60 future unfinished tasks are scheduled. Cross-device changes sync when the app is opened. No remote push service is configured.
