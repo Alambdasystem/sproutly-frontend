@@ -1,10 +1,10 @@
 import React,{useEffect,useState} from 'react';
-import {Platform,View} from 'react-native';
+import {Platform,View,Modal} from 'react-native';
 import {Button,T,C} from './ui';
 export default function InstallApp(){
  const [prompt,setPrompt]=useState<any>(null),[installed,setInstalled]=useState(false),[help,setHelp]=useState('');
  useEffect(()=>{if(Platform.OS!=='web')return;const w=window as any;const media=w.matchMedia('(display-mode: standalone)');const sync=()=>setInstalled(media.matches||!!w.navigator.standalone);const ready=(e:any)=>{e.preventDefault();setPrompt(e)};const done=()=>{setInstalled(true);setPrompt(null);setHelp('')};sync();w.addEventListener('beforeinstallprompt',ready);w.addEventListener('appinstalled',done);media.addEventListener('change',sync);return()=>{w.removeEventListener('beforeinstallprompt',ready);w.removeEventListener('appinstalled',done);media.removeEventListener('change',sync)}},[]);
  if(Platform.OS!=='web'||installed)return null;
  const install=async()=>{if(prompt){try{await prompt.prompt();const choice=await prompt.userChoice;if(choice.outcome==='accepted')setHelp('Finish installation in your browser.');}catch{setHelp('Open your browser menu and choose Install app or Add to Home screen.')}finally{setPrompt(null)}}else setHelp(/iPhone|iPad/.test(navigator.userAgent)?'In Safari, tap Share, then Add to Home Screen.':'On Android, open this page in Chrome. Tap ⋮, then Install app or Add to Home screen. If you opened it inside another app, choose Open in Chrome first.')};
- return <View style={{gap:8,marginBottom:16}}><Button secondary onPress={install}>Install Sproutly</Button>{!!help&&<T accessibilityLiveRegion="polite" style={{fontSize:13,color:C.muted}}>{help}</T>}<T style={{fontSize:11,color:C.muted}}>Add Sproutly to your home screen. Internet is needed for your garden and plant analysis.</T></View>;
+ return <View><Button secondary onPress={install}>Install app</Button><Modal visible={!!help} transparent animationType="fade" onRequestClose={()=>setHelp('')}><View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#0007',padding:24}}><View style={{width:'100%',maxWidth:400,backgroundColor:C.white,padding:24,borderRadius:24,gap:18}}><T style={{fontSize:20}}>Install Sproutly</T><T accessibilityLiveRegion="polite" style={{fontSize:14,color:C.muted}}>{help}</T><T style={{fontSize:12,color:C.muted}}>Internet is needed for your garden and plant analysis.</T><Button onPress={()=>setHelp('')}>Close</Button></View></View></Modal></View>;
 }
