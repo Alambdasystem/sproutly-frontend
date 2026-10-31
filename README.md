@@ -25,3 +25,5 @@ The marketplace includes 24 sample offers and a separate live GBIF reference sea
 
 ## Demo photos and live merchant search
 Demo basil, monstera, tomato seedlings, and seed assortment cards use bundled 1254×1254 AI-generated assets, explicitly labeled as illustrations. User-uploaded photos retain priority. Other species retain generic art rather than mislabeling a generated basil photo. The separate Real seed & plant shop tab reads the backend merchant search endpoint and opens merchant checkout externally. Merchant cards use merchant photographs, not generated demo imagery. No real product can be added to the demo basket.
+
+The merchant product page showed a seasonal ordering pause through early December when checked October 30, 2026. A dated notice is displayed separately from the live catalog stock fields; merchant catalog stock is not a guarantee of checkout availability.
