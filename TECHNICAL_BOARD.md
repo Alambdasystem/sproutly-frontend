@@ -29,7 +29,7 @@ See the backend repository's INTEGRATIONS.md for exact configuration and remaini
 | --- | --- |
 | 1 — Data foundations | Deployed: private packets/projects/conversations/draft care plans, versions, ownership checks and persistence. Subsequent phases extend the schemas as features arrive. |
 | 2 — Seed Studio | Deployed: Home shortcut, My Garden section, manual entry, optional photos, draft recovery, atomic save and saved project details. APK inclusion waits until the end by owner instruction. |
-| 3 — Packet scanning | Implemented: front/back/additional instruction/barcode panels, crop/rotation, independent English OCR, structured image extraction, field confidence/evidence, editable review, explicit confirmation, retained originals, optional GBIF species references. Barcode product provider and 30–50 real-packet benchmark remain OPEN. Live acceptance is reported with the deployment. |
+| 3 — Packet scanning | Deployed and checked with labeled synthetic packets: front/back/additional instruction/barcode panels, crop/rotation, independent English OCR, structured image extraction, field confidence/evidence, editable review, explicit confirmation, retained originals, optional GBIF species references. Machine barcode/QR decoding, a product lookup provider, and the 30–50 real-packet benchmark remain OPEN. Printed barcode digits can be extracted and reviewed without a product match. |
 | 4 — Personalized grow plans | Pending: growing setup/location, weather/frost/season sources, validated generation and source disclosure. |
 | 5 — Growth tracking | Pending: germination windows, milestones, adaptive dates, reminders, hardening off, transplant/harvest and seed-to-plant history linking. Upcoming milestones on Seed Studio Home arrive here. |
 | 6 — Conversational Doctor | Pending: ongoing text/photo chat, correct plant/seed memory and verified app actions. |
@@ -40,3 +40,5 @@ See the backend repository's INTEGRATIONS.md for exact configuration and remaini
 
 Current local automated validation: 30 backend tests and 9 frontend tests pass; TypeScript and production web build are checked per release. Native camera/keyboard/notifications and narrow Android acceptance are not inferred from desktop browser or unit tests. The downloadable APK remains version 0.1.1 until final packaging.
 
+
+Phase 3 live acceptance: OCR + real OpenAI extraction produced 29 structured fields from two explicitly synthetic demo packet images. Printed depth and germination ranges matched; an unprinted scientific name remained empty. Customer correction, explicit confirmation, atomic project save, original-image retention, unsupported-unit rejection and review recovery after a full browser reload were checked. A readable non-retail label classification issue was found and fixed. These results do not certify real manufacturer-packet accuracy or physical-device behavior.
