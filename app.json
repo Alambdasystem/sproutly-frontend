@@ -2,7 +2,7 @@
   "expo": {
     "name": "Sproutly",
     "slug": "sproutly",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "orientation": "default",
     "userInterfaceStyle": "light",
     "web": {
@@ -16,7 +16,7 @@
     },
     "android": {
       "package": "com.alambda.sproutly",
-      "versionCode": 2,
+      "versionCode": 3,
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW"
       ],
@@ -39,7 +39,8 @@
           "enableBackgroundPlayback": false
         }
       ],
-      "expo-sharing"
+      "expo-sharing",
+      "expo-secure-store"
     ],
     "icon": "./icon-512.png"
   }
