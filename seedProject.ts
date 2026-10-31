@@ -1,5 +1,5 @@
 export type SeedDraft={name:string;variety:string;brand:string;growingMethod:string;sowingDate:string;instructions:string};
-export type SeedPacket={id:string;name:string;variety?:string;brand?:string;instructions?:string;mediaIds?:string[];revision:number};
+export type SeedPacket={id:string;name:string;variety?:string;brand?:string;instructions?:string;mediaIds?:string[];extractionId?:string;originalMediaIds?:string[];confirmedFields?:Record<string,string>;revision:number};
 export type SeedProject={id:string;name:string;packetId?:string;growingMethod?:string;sowingDate?:string;stage?:string;revision:number;created:string;updated:string};
 export const emptySeedDraft:SeedDraft={name:'',variety:'',brand:'',growingMethod:'indoor',sowingDate:'',instructions:''};
 export const growingMethods=[['indoor','Indoor'],['outdoor','Outdoor'],['indoor-to-outdoor','Indoor to outdoor'],['container','Container']] as const;
