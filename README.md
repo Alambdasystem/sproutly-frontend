@@ -22,3 +22,6 @@ Uses React Native View/Text/Pressable/Image/ScrollView, react-native-svg and exp
 
 
 The marketplace includes 24 sample offers and a separate live GBIF reference search. Botanical records have source links and are not presented as inventory. Seed/supplier checkout remains simulated.
+
+## Demo photos and live merchant search
+Demo basil, monstera, tomato seedlings, and seed assortment cards use bundled 1254×1254 AI-generated assets, explicitly labeled as illustrations. User-uploaded photos retain priority. Other species retain generic art rather than mislabeling a generated basil photo. The separate Real seed & plant shop tab reads the backend merchant search endpoint and opens merchant checkout externally. Merchant cards use merchant photographs, not generated demo imagery. No real product can be added to the demo basket.
