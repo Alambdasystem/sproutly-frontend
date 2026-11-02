@@ -15,3 +15,7 @@ test('live Doctor draft is visible before completion but never spoken before fin
  let preview,finish,signal;const h=harness({sendTurn:(_text,_id,onPreview,abort)=>{preview=onPreview;signal=abort;return new Promise(r=>finish=r)}});h.draft='';await h.c.call();h.handlers[0].result('Soil question',true);await tick();preview('Check the soil');assert.equal(h.state.reply,'Check the soil');assert.equal(h.state.phase,'thinking');assert.equal(h.speeches.length,0);finish('Check the soil. Does the pot drain?');await tick();assert.equal(h.speeches[0].text,'Check the soil. Does the pot drain?');h.c.end();assert.equal(h.state.call,false);
  h.draft='';await h.c.call();h.handlers.at(-1).result('Next question',true);await tick();const last=preview;h.c.end();assert.equal(signal.aborted,true);last('Late draft');finish('Late answer');await tick();assert.equal(h.speeches.length,1);assert.notEqual(h.state.reply,'Late draft');h.c.dispose();
 });
+
+test('ending while interruption awaits speaker shutdown never reopens the microphone',async()=>{
+ let release,delay=false;const h=harness({stopSpeech:()=>delay?new Promise(r=>release=r):Promise.resolve()});h.draft='';await h.c.call();h.handlers[0].result('First question',true);await tick();delay=true;const interrupt=h.c.interrupt();await tick();delay=false;h.c.end();release();await interrupt;assert.equal(h.handlers.length,1);assert.equal(h.state.call,false);assert.equal(h.state.phase,'idle');h.c.dispose();
+});

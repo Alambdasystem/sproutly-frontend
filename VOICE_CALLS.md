@@ -1,4 +1,4 @@
-# Plant Doctor voice update — 0.1.4
+# Plant Doctor voice update — 0.1.5
 
 The framework remains Expo SDK 55 / React Native / Node. No phone number or telephony account is required.
 
@@ -34,4 +34,6 @@ Doctor conversations now use real server-sent Responses API summary deltas. The 
 
 Expo SDK 55 `expo/fetch` supplies streaming on web and native. Interrupted/unsupported streams fall back to polling the accepted job with its existing idempotency key. Hang-up/background/unmount aborts the event observer and ignores late previews/audio, while accepted jobs may still finish privately. Streams recheck sessions/ownership, have connection/time/buffer limits, clean up on disconnect, and do not add AI requests. Call duration is shown as minutes/seconds.
 
-22 frontend tests and 46 backend tests (68 total) pass, including byte-split UTF-8, JSON escaping, incomplete/refused AI streams, cross-account stream denial, saved result replay, pre-validation silence, and hang-up cancellation. TypeScript, production web export and signed native build pass. Physical audio checks remain required.
+23 frontend tests and 46 backend tests (69 total) pass, including byte-split UTF-8, JSON escaping, incomplete/refused AI streams, cross-account stream denial, saved result replay, pre-validation silence, and hang-up cancellation. TypeScript, production web export and signed native build pass. Physical audio checks remain required.
+
+The final interruption race test confirms that hang-up while speaker shutdown is pending cannot reopen recognition. The same lifecycle guard covers screen unmount and background end. Android release 0.1.5/code 6 contains this guard.

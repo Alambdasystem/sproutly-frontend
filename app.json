@@ -2,7 +2,7 @@
   "expo": {
     "name": "Sproutly",
     "slug": "sproutly",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "orientation": "default",
     "userInterfaceStyle": "light",
     "web": {
@@ -16,7 +16,7 @@
     },
     "android": {
       "package": "com.alambda.sproutly",
-      "versionCode": 5,
+      "versionCode": 6,
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW"
       ],
