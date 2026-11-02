@@ -56,3 +56,5 @@ Public Android voice pilot 0.1.3: https://github.com/Alambdasystem/sproutly-fron
 ## Doctor streaming phase — November 1, 2026
 
 Implemented live answer drafts from real OpenAI Responses deltas, authenticated event delivery, saved-job polling recovery, call timer and hang-up stream cancellation. Final structured validation and explicit garden-action confirmation remain in force. Backend source b34e04617ddd8bef94a1795ac6058abcbf8f28d4. 22 frontend + 46 backend tests pass (68 total), web export/typecheck/native build pass. Signed Android 0.1.4/code 5 matches the existing release certificate. Physical audio and browser/device installation are not certified by these checks. Public rollout verification follows publication.
+
+Live API streaming verification passed: first draft at 1,918 ms, final validated answer at 4,019 ms, exactly two saved conversation messages. Backend deployment dep-dbjvpnajnfac7396ef9g is live. Android source tag v0.1.4-android-pilot points to bedc2aebd2e2e159dc2565610bd241d31f3c0742. Public APK signature and byte equality verified. Website download is being updated to 0.1.4.
