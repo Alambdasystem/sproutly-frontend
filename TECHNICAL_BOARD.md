@@ -60,3 +60,5 @@ Implemented live answer drafts from real OpenAI Responses deltas, authenticated 
 Live API streaming verification passed: first draft at 1,918 ms, final validated answer at 4,019 ms, exactly two saved conversation messages. Backend deployment dep-dbjvpnajnfac7396ef9g is live. Android source tag v0.1.4-android-pilot points to bedc2aebd2e2e159dc2565610bd241d31f3c0742. Public APK signature and byte equality verified. Website download is being updated to 0.1.4.
 
 Final voice pilot refinement: hang-up/background during pending interruption shutdown cannot reopen the microphone. 23 frontend + 46 backend tests pass (69 total). Web export/typecheck and signed Android 0.1.5/code 6 build pass. Live browser test displayed an incomplete Doctor draft before the final saved answer. Physical microphone/speaker validation remains outstanding. 0.1.5 supersedes 0.1.4 as the recommended pilot.
+
+Public 0.1.5 APK downloaded byte-for-byte equal to the built artifact; existing signing certificate verified. Release source c4c2450a73fabd3d252a4dfd3319e3fc93489a96, SHA-256 53f51bbea751031baa30590d492d2a7ce0af10c639d0d5a070863d51481cf2cb. Top website download now targets 0.1.5.
