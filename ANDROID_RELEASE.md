@@ -1,11 +1,11 @@
-# Sproutly Android 0.1.2 pilot
+# Sproutly Android 0.1.3 pilot
 
-Native Expo/React Native release, package `com.alambda.sproutly`, version 0.1.2, versionCode 3. Uses the live HTTPS API and an embedded release JavaScript bundle. Expo Go is not required. Internet is required for account data and AI services.
+Native Expo/React Native release, package `com.alambda.sproutly`, version 0.1.3, versionCode 4. Uses the live HTTPS API and an embedded release JavaScript bundle. Expo Go is not required. Internet is required for account data and AI services.
 
 ## Verified artifact
 
-- Size: 57,992,497 bytes.
-- APK SHA-256: `da869be0082411a1b441323df364731d45ca1b7ba825645701057366dc9eeb85`.
+- Size: 58,056,267 bytes.
+- APK SHA-256: `9e7d2f7ecb025780494c9ad3ba09cc67d3109778f6b807198d5e2befb6fe6568`.
 - Signing certificate SHA-256: `9fc8d7beb48216a0810a84d46076b856f2930c77f03152d0786a13dca4dcf0fb`, matching the independently downloaded 0.1.1 APK.
 - APK signature verifies; version code is higher than 0.1.1. Package ID is unchanged.
 - ARM64 and ARM32 phone ABIs (`arm64-v8a`, `armeabi-v7a`). Minimum API 24; target API 36.
@@ -32,3 +32,7 @@ The APK is a pilot, not physical-device certification. Test install/update, cold
 The website downloads the APK. Android controls installation permission and final confirmation. Website code cannot bypass those controls. The nearest 60 future unfinished reminders are scheduled after opt-in; cross-device changes sync when the app is opened. No remote push provider is configured.
 
 See TECHNICAL_BOARD.md for the remaining store, provider, evaluation and launch gates.
+
+## Live voice in 0.1.3
+
+Live dictation writes interim words into the composer. In-app calls automatically send finalized turns, speak concise Doctor replies with timed captions, and provide microphone mute, interruption and hang-up controls. The microphone pauses during answers. Device/browser speech services may process live audio online; finalized text uses the existing OpenAI care API. Recorded audio fallback has explicit transcript preview and MIME codec handling. See VOICE_CALLS.md. Physical phone microphone, speaker, permission and background acceptance remain open.

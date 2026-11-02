@@ -1,4 +1,4 @@
-# Sproutly technical board — 2026-10-31
+# Sproutly technical board — 2026-11-01
 
 The existing Expo / React Native / Node / SQLite framework is retained. This board distinguishes implemented pilot features from launch gates. APK packaging follows feature validation.
 
@@ -15,7 +15,7 @@ The existing Expo / React Native / Node / SQLite framework is retained. This boa
 | 9 — Premium | Native RevenueCat adapter, actual store offering/price rendering, purchase/restore/manage paths, backend entitlements, expiry/refund/sandbox checks and authenticated replay-safe webhooks | RevenueCat keys/project, real store products and approved pricing, store test accounts, trial/renewal/restore tests. Enforcement OFF; pilot access is not a paid subscription. |
 | 10 — Launch | Private account export, password-confirmed account deletion, subscription cancellation notice, pilot privacy/help, guarded local backups, own-account operations, render error recovery, native secure session storage, bounded AI usage | Verified recovery sender, offsite destination/credentials + remote restore rehearsal, external crash/alert monitoring, final policies/store declarations, beta/device/store acceptance |
 
-## Verified in this release
+## Verified in the 0.1.2 release
 
 - 42 backend automated tests and 9 frontend tests pass; TypeScript and production web export pass.
 - Initial feature deployments reached live. Final website deployment `055e1c1ab6715e01d2f3f6604844ffaaf2cc161b` is live. Final API safeguards are in `46339b013b7c3eed0af3732284b12493ed529e7a`, and the Render rollout reached live. Native refinements are committed in frontend `97c3536054bf3f94f2eb23d514aea5b30b33f287`; signed release tag `v0.1.2-android-pilot` points to source `79126558ad2594882d4879c29825c4bffdb33947`. The live website top button targets 0.1.2. Clicking it initiated an APK download that the cloud browser canceled; a physical Android browser download/install remains unverified. Independent public HTTP download and signature verification passed.
@@ -41,3 +41,12 @@ Physical-commerce payments/payouts remain separate and simulated. Future Shop is
 Release verification: API request timing logs are active in Render and inspected for status/duration without request content. Updated iOS project generation passes; no signed iOS binary or physical device test is claimed. Android ADB inventory is empty. The downloadable release is a pilot, with launch gates above still open.
 
 Final API regression checks cover the transition from free pilot to enforced plant limits, rescue history deletion protection, and completion of outstanding rescue checkpoint reminders. No new APK is required for these server-side safeguards.
+
+## Plant Doctor voice update — 0.1.3
+
+- Live partial transcripts update the existing composer; recorded fallback previews and confirms inserted text, normalizes browser MIME codecs and preserves failed transcript/recording recovery.
+- New Doctor replies read automatically by default with device speech-boundary captions. Spoken turns include concise summary, warnings and follow-up questions. Full guidance remains saved.
+- In-app call mode: finalized turns use the authenticated plant/project conversation API; listening pauses during thinking/speaking; mute, interrupt and end controls; ten-minute cap; background/tab-hide/unmount cleanup; no automatic garden actions.
+- 18 frontend tests and 43 backend tests pass (61 total). TypeScript and web export pass. Real deployed transcription accepted a codec-qualified synthetic WebM file and returned usable text. This is integration evidence, not microphone or transcription-accuracy certification.
+- Android 0.1.3, versionCode 4: native build passes; speech-recognition module is in the APK; signature matches the existing certificate; two phone ABIs; 16 KB ZIP alignment. Public artifact verification is recorded after publication.
+- Live speech uses device/browser recognition, not an OpenAI realtime audio transport. Calls take turns and can wait for an AI answer. Speech services/permissions, silence mode, device volume and word-timing callbacks vary; physical Android/iPhone checks remain open. See VOICE_CALLS.md.

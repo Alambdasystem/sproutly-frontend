@@ -22,4 +22,6 @@ Final questions and plant context use the existing OpenAI care API, quotas and o
 
 ## Validation
 
-17 frontend tests, including live partial input, duplicate final events, reply captions, mute/resume, interruption, end during permissions or API requests, failed requests preserving drafts and codec MIME normalization. 43 backend tests include codec-qualified recording transcription. TypeScript and production web export pass. Native build/signature and live rollout verification are recorded separately in the release notes/technical board. A physical Android/iPhone microphone, audio-routing, permissions and speaker test remains required; synthetic events and audio fixtures are not hardware acceptance.
+18 frontend tests, including live partial input, duplicate final events, reply captions, mute/resume, interruption, end during permissions or API requests, failed requests preserving drafts and codec MIME normalization. 43 backend tests include codec-qualified recording transcription. TypeScript and production web export pass. Native build/signature and live rollout verification are recorded separately in the release notes/technical board. A physical Android/iPhone microphone, audio-routing, permissions and speaker test remains required; synthetic events and audio fixtures are not hardware acceptance.
+
+Spoken turns include the answer summary and up to two warnings and follow-up questions. Long speech is bounded to 3,500 characters; full structured guidance remains in the saved conversation. Proposed garden actions are never spoken as already executed.
