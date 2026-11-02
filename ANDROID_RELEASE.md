@@ -4,8 +4,8 @@ Native Expo/React Native release, package `com.alambda.sproutly`, version 0.1.3,
 
 ## Verified artifact
 
-- Size: 58,056,267 bytes.
-- APK SHA-256: `9e7d2f7ecb025780494c9ad3ba09cc67d3109778f6b807198d5e2befb6fe6568`.
+- Size: 58,056,263 bytes.
+- APK SHA-256: `b5aebcb6ed4739b6596a6ac7d7a903c974a7f616f9f31f4bf5f2c24dae3c4568`.
 - Signing certificate SHA-256: `9fc8d7beb48216a0810a84d46076b856f2930c77f03152d0786a13dca4dcf0fb`, matching the independently downloaded 0.1.1 APK.
 - APK signature verifies; version code is higher than 0.1.1. Package ID is unchanged.
 - ARM64 and ARM32 phone ABIs (`arm64-v8a`, `armeabi-v7a`). Minimum API 24; target API 36.
