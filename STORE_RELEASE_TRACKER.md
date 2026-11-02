@@ -45,3 +45,7 @@ For Android and iPhone separately record device/OS, build and signature, tester,
 - https://support.google.com/googleplay/android-developer/answer/10144311 — user-data/privacy requirements.
 - https://developer.apple.com/help/app-review/guideline-reference/5-1-1-account-deletion — in-app deletion.
 - https://developer.apple.com/app-store/review/guidelines/ — final review readiness.
+
+## Deployment evidence — November 2, 2026
+
+Frontend source 08d38a31d57d76d164fa11e12f279c12beab092f reached Render live in deployment dep-dbkgggom7kps738can40. Public privacy.html, support.html and delete-account.html each returned HTTP 200 with the expected standalone content, rather than the SPA fallback. The deletion page rendered without sign-in and exposed both direct in-app steps and an external email-request path. Frontend 23 tests, TypeScript and web export passed; Android release script syntax passed. No backend changes or new binary were made. Privacy text remains pilot disclosure pending final store review.
