@@ -1,4 +1,4 @@
-# Plant Doctor voice update — 0.1.3
+# Plant Doctor voice update — 0.1.4
 
 The framework remains Expo SDK 55 / React Native / Node. No phone number or telephony account is required.
 
@@ -27,3 +27,11 @@ Final questions and plant context use the existing OpenAI care API, quotas and o
 Spoken turns include the answer summary and up to two warnings and follow-up questions. Long speech is bounded to 3,500 characters; full structured guidance remains in the saved conversation. Proposed garden actions are never spoken as already executed.
 
 Mute/resume preserves an unfinished spoken phrase and joins it to the next recognized words before sending, instead of replacing earlier words.
+
+## Streaming phase — November 1, 2026
+
+Doctor conversations now use real server-sent Responses API summary deltas. The authenticated `/care/jobs/:id/events` endpoint sends replaceable job snapshots with a live summary preview, followed by the validated result or explicit failure. Previews are memory-only and are labeled live drafts. Other structured fields and garden proposals do not appear as partial JSON. Speech starts after final validation, so warnings/questions are included. This is text streaming with turn-based audio, not full-duplex voice or streamed audio.
+
+Expo SDK 55 `expo/fetch` supplies streaming on web and native. Interrupted/unsupported streams fall back to polling the accepted job with its existing idempotency key. Hang-up/background/unmount aborts the event observer and ignores late previews/audio, while accepted jobs may still finish privately. Streams recheck sessions/ownership, have connection/time/buffer limits, clean up on disconnect, and do not add AI requests. Call duration is shown as minutes/seconds.
+
+22 frontend tests and 46 backend tests (68 total) pass, including byte-split UTF-8, JSON escaping, incomplete/refused AI streams, cross-account stream denial, saved result replay, pre-validation silence, and hang-up cancellation. TypeScript, production web export and signed native build pass. Physical audio checks remain required.

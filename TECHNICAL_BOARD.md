@@ -52,3 +52,7 @@ Final API regression checks cover the transition from free pilot to enforced pla
 - Live speech uses device/browser recognition, not an OpenAI realtime audio transport. Calls take turns and can wait for an AI answer. Speech services/permissions, silence mode, device volume and word-timing callbacks vary; physical Android/iPhone checks remain open. See VOICE_CALLS.md.
 
 Public Android voice pilot 0.1.3: https://github.com/Alambdasystem/sproutly-frontend/releases/tag/v0.1.3-android-pilot . Downloaded public APK matches the final build byte-for-byte and verifies against the existing signing certificate. APK source tag bc15d690bcd8a6f38826084d91391e84f302b49e. Physical microphone/speaker testing remains outstanding. Backend voice codec fix is live at commit 70d8bfa936171c888a34604add623d9d7814ea22.
+
+## Doctor streaming phase — November 1, 2026
+
+Implemented live answer drafts from real OpenAI Responses deltas, authenticated event delivery, saved-job polling recovery, call timer and hang-up stream cancellation. Final structured validation and explicit garden-action confirmation remain in force. Backend source b34e04617ddd8bef94a1795ac6058abcbf8f28d4. 22 frontend + 46 backend tests pass (68 total), web export/typecheck/native build pass. Signed Android 0.1.4/code 5 matches the existing release certificate. Physical audio and browser/device installation are not certified by these checks. Public rollout verification follows publication.

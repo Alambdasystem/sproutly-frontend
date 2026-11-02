@@ -10,7 +10,7 @@
     "ios": "expo run:ios",
     "build": "expo export --platform web && node pwa-build.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "node --test photoSelection.test.mjs reminderPlan.test.mjs seedProject.test.mjs packetReview.test.mjs voiceSession.test.mjs"
+    "test": "node --test photoSelection.test.mjs reminderPlan.test.mjs seedProject.test.mjs packetReview.test.mjs voiceSession.test.mjs jobEvents.test.mjs"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.4.2",
