@@ -13,5 +13,5 @@ if(!s.includes("storeFile file(System.getenv('SPROUTLY_KEYSTORE_PATH'))"))s=s.re
         }`);
 s=s.replace('signingConfig signingConfigs.debug\n            def enableShrinkResources','signingConfig signingConfigs.release\n            def enableShrinkResources');
 await writeFile(path,s);
-run(process.platform==='win32'?'android/gradlew.bat':'android/gradlew',['-p','android','assembleRelease','--no-daemon','--max-workers=2','-PreactNativeArchitectures=arm64-v8a,armeabi-v7a']);
+run(process.platform==='win32'?'android/gradlew.bat':'android/gradlew',['-p','android',process.argv.includes('--aab')?'bundleRelease':'assembleRelease','--no-daemon','--max-workers=2','-PreactNativeArchitectures=arm64-v8a,armeabi-v7a']);
 

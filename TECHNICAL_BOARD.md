@@ -62,3 +62,7 @@ Live API streaming verification passed: first draft at 1,918 ms, final validated
 Final voice pilot refinement: hang-up/background during pending interruption shutdown cannot reopen the microphone. 23 frontend + 46 backend tests pass (69 total). Web export/typecheck and signed Android 0.1.5/code 6 build pass. Live browser test displayed an incomplete Doctor draft before the final saved answer. Physical microphone/speaker validation remains outstanding. 0.1.5 supersedes 0.1.4 as the recommended pilot.
 
 Public 0.1.5 APK downloaded byte-for-byte equal to the built artifact; existing signing certificate verified. Release source c4c2450a73fabd3d252a4dfd3319e3fc93489a96, SHA-256 53f51bbea751031baa30590d492d2a7ce0af10c639d0d5a070863d51481cf2cb. Top website download now targets 0.1.5.
+
+## Store preparation — November 2, 2026
+
+See STORE_RELEASE_TRACKER.md and STORE_LISTING.md. Public privacy/support/account-deletion page sources added to web export; Android release script supports --aab while retaining original signing requirements. No AAB or signed iOS binary produced in this run. Play ownership/testing eligibility and Apple team access remain unverified. First 100 installs are a goal: zero installs evidenced in the tracker, actual install population unknown. No store submission or physical test claimed.
