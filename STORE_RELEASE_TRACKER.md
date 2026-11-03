@@ -19,7 +19,7 @@ Framework: Expo SDK 55 / React Native / Node / SQLite, retained. Source inspecte
 | Store screenshots | Open | Real Android/iPhone screenshots required; desktop screenshots are not store-device evidence |
 | Submission | Not submitted | No Play or Apple submission ID; no review status claimed |
 | LinkedIn community | Pending | Earlier form reload denied due unsaved state; do not bypass without approval |
-| Organic posts | Not published in this run | Coordinate with social campaign tracker to avoid duplicate promotion; describe pilot status accurately |
+| Organic posts | Two published and verified Nov 3 | James profile and Alambda Systems page; public permalinks below. Social campaign tracker updated for deduplication. No group post, DMs, invitations or spend |
 
 ## Acquisition baseline and counting rules
 
@@ -60,3 +60,16 @@ Frontend source 08d38a31d57d76d164fa11e12f279c12beab092f reached Render live in 
 - Current frontend 30 tests + backend 46 tests pass (76 total); TypeScript and production web export pass. Backend dependencies restored before its successful regression run; no backend source changes.
 - Social campaign tracker checked Nov 3 (version 11, updated 18:59 UTC); no Sproutly publication recorded. Personal profile and Alambda page access must be checked live before publication. Existing group reload rejection remains respected.
 - Remaining user-only gates: authenticated Play ownership/account type and testing eligibility; Apple Developer team and Expo project/signing access; physical Android/iPhone QA and actual device screenshots; reviewed credentials, privacy labels/Data Safety and policy certification. No enrollment fees, agreements or ads accepted.
+
+## Live deployment and launch evidence — November 3
+
+Frontend source 82e85805f188322cb148a9e9f95ef22b3a6498ff reached Render live in deployment dep-dbl5nf8ae00c73bst9e0 at 22:11:05 UTC. beta.html, privacy.html, support.html and delete-account.html returned HTTP 200 with the exact expected standalone content; API health returned 200. Live beta page rendered with web entry, direct Android download, first-use flow and voluntary feedback path. APK asset HEAD returned HTTP 200, 58,071,615 bytes, Android package MIME type. This checks availability, not physical installation.
+
+Verified public organic publications (posted once after campaign/recent-post checks):
+
+- James / personal: https://www.linkedin.com/feed/update/urn:li:activity:7523507735645310976/
+- Alambda Systems: https://www.linkedin.com/feed/update/urn:li:share:7523508362202841088/?actorCompanyId=68920975
+
+Both describe the web/direct Android pilot, invite 20 volunteer growers and accurately state store/hardware preparation. Full copy and author verified at each public permalink. No DMs, unsolicited invitations, paid boosting or group-form bypass. Social campaign publication records updated to prevent duplicates; no general publishing schedule changed.
+
+Counts after publication: **0 verified non-QA installs evidenced; actual installed population unknown**. APK downloads unknown, store reports unavailable, voluntary beta enrollments unmeasured. Publishing reach is not an install. ACQUISITION_STATUS.json remains a zero-observation baseline. Next measurable step is opt-in beta evidence review and real-device acceptance; do not fill the ledger with demo/test observations.
