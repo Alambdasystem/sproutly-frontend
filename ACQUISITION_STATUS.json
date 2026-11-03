@@ -1,0 +1,32 @@
+{
+  "asOf": "2026-11-03T22:06:10.051Z",
+  "measurement": "reviewed_pilot_ledger",
+  "population": "unknown",
+  "apkDownloads": null,
+  "optedInBetaParticipants": 0,
+  "provisionalNativeFirstLaunches": 0,
+  "verifiedFirstTimePilotInstalls": 0,
+  "activatedVerifiedPilotUsers": 0,
+  "byChannel": {},
+  "byPlatform": {},
+  "retention": {
+    "D1": {
+      "eligible": 0,
+      "returned": 0,
+      "rate": null
+    },
+    "D7": {
+      "eligible": 0,
+      "returned": 0,
+      "rate": null
+    }
+  },
+  "excludedQaDemoStaffSubjects": 0,
+  "storeReports": [],
+  "combinedPilotAndStoreInstalls": null,
+  "notes": [
+    "Downloads, provisional first launches and store totals are separate measures.",
+    "Pilot verification relies on evidence review, not device attestation. Unresolved identities must not be counted twice.",
+    "Store reports are separate periods, never summed here. Verify QA exclusions before acquisition claims."
+  ]
+}

@@ -42,3 +42,7 @@ Live dictation writes interim words into the composer. In-app calls automaticall
 Doctor summaries appear as live drafts from real Responses API text deltas. Complete structured answers are validated before saved guidance and speech playback. Call mode now shows elapsed minutes/seconds and detaches live observation on hang-up. A disconnected event stream falls back to retrieving the same accepted job, never reposting the question. 23 frontend and 46 backend tests pass. Physical microphone/speaker testing remains outstanding.
 
 Interruption shutdown is generation-guarded: ending/backgrounding during awaited speech shutdown cannot reopen the microphone. Regression test passes. Version 0.1.5/code 6 supersedes the 0.1.4 pilot.
+
+## Store preparation — November 3
+
+`node android-release.mjs --aab` selects bundleRelease. The production signing patch fails closed when the generated template is not recognized, rather than falling back to Expo's debug key. The original signing certificate has been recovered and matches the published pilot. Current Expo Android prebuild and signing-patch validation pass. This environment lacks an installed Android SDK/NDK and existing SDK license records; no new license was accepted or bundle built. Version code must increase before a future update; retain code 6 here until the actual build is prepared. Play account ownership and testing eligibility remain unverified.

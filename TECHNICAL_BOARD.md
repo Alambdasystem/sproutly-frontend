@@ -66,3 +66,7 @@ Public 0.1.5 APK downloaded byte-for-byte equal to the built artifact; existing 
 ## Store preparation — November 2, 2026
 
 See STORE_RELEASE_TRACKER.md and STORE_LISTING.md. Public privacy/support/account-deletion page sources added to web export; Android release script supports --aab while retaining original signing requirements. No AAB or signed iOS binary produced in this run. Play ownership/testing eligibility and Apple team access remain unverified. First 100 installs are a goal: zero installs evidenced in the tracker, actual install population unknown. No store submission or physical test claimed.
+
+## Release and acquisition preparation — November 3, 2026
+
+Original Android signing certificate recovered and verified privately; no new binary. Android release generation now stops on unrecognized signing templates; current Expo prebuild validates. Beta onboarding page and reviewed-evidence acquisition reporting added. 30 frontend + 46 backend tests pass (76 total), typecheck and web export pass. No store submission, physical acceptance or installed-user claim. See STORE_RELEASE_TRACKER.md and ACQUISITION.md for live evidence and gates.
