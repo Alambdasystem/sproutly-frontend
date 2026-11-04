@@ -27,3 +27,14 @@ Official references checked November 3, 2026:
 - https://docs.codemagic.io/yaml-quick-start/building-a-react-native-app/
 - https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/
 - https://docs.codemagic.io/yaml-publishing/google-play/
+
+
+## Completed candidate and local verifier
+
+Build #1 finished successfully in 11m 7s: https://codemagic.io/app/6aea9e3d1bb9c30e396c71d9/build/6aeaac9da87b4d255fde5fe6 . Its exact source is `90d676a8447755cbcc139efd40dd12bbb5c0c626`; package/version `com.alambda.sproutly` / 0.1.6 / code 8. The signed AAB and derived universal QA APK are ready for physical-device acceptance, with matching original certificates. Store submission remains absent.
+
+`sign-android-bundle.py` performs the local verification/signing steps. Requires Python 3, a full JDK 17 on PATH and a separately verified official bundletool JAR. Invoke `python sign-android-bundle.py --help` for arguments. Supply the downloaded unsigned bundle, CI metadata, expected source commit, bundletool, private PKCS12 recovery files and a new output path. Recovery JSON stays outside the repository and contains applicationId, alias, storePassword and keyPassword. Passwords are passed to JDK through environment references, never command text or logs. Do not upload recovery material to CI or public GitHub.
+
+The verifier rejects a different source/package/digest, signed intermediate, duplicate ZIP entries, unexpected release flags/permissions, misaligned ARM64 libraries or a different certificate. It validates both unsigned and signed bundles. Its report appends `.verification.json` to the complete output filename (for example `Sproutly-0.1.6-code8.aab.verification.json`); keep APK reports distinct as `.apk.verification.json`. An existing binary output is never overwritten. Real-artifact verification passed for this candidate; retained receipts list all actual permissions and explicit `physicalDeviceQa: false`, `storeSubmission: null`.
+
+AAB signing confirms binary provenance. It does not establish developer-account ownership, store eligibility, SDK privacy answers or physical-device behavior. Those gates remain in STORE_RELEASE_TRACKER.md.

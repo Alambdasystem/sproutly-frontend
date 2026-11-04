@@ -46,3 +46,10 @@ Interruption shutdown is generation-guarded: ending/backgrounding during awaited
 ## Store preparation — November 3
 
 `node android-release.mjs --aab` selects bundleRelease. The production signing patch fails closed when the generated template is not recognized, rather than falling back to Expo's debug key. The original signing certificate has been recovered and matches the published pilot. Current Expo Android prebuild and signing-patch validation pass. This environment lacks an installed Android SDK/NDK and existing SDK license records; no new license was accepted or bundle built. Version code must increase before a future update; retain code 6 here until the actual build is prepared. Play account ownership and testing eligibility remain unverified.
+
+
+## Private store/QA candidate 0.1.6/code 8
+
+Codemagic build #1 now completed from source `90d676a8447755cbcc139efd40dd12bbb5c0c626`. The downloaded unsigned AAB was signed locally with the original pilot key, validated with bundletool and used to generate an independently signature-verified universal APK. Package, certificate, API 24/36, ARM64/ARM32 and 16 KB native-library checks pass. Exact digests and receipts: STORE_RELEASE_TRACKER.md and the root `Sproutly-0.1.6-code8.*.json` receipts.
+
+This supersedes the earlier 'no bundle built' preparation status, while the public website still links 0.1.5/code 6. The candidate is not published to Google Play and physical Android acceptance remains open. No hardware, store approval or install count is inferred from binary verification. See CODEMAGIC_RELEASE.md for the reproducible local signing boundary.

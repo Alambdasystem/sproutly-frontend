@@ -8,3 +8,5 @@ ios/
 *.p12
 credentials.json
 .env*
+__pycache__/
+release-candidate/

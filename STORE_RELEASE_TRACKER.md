@@ -1,14 +1,14 @@
 # Sproutly store launch and acquisition — November 3, 2026
 
-Framework: Expo SDK 55 / React Native / Node / SQLite, retained. Source inspected frontend 07dda422f4fc952b578b831fbd0ffa4540688bd5; backend b34e04617ddd8bef94a1795ac6058abcbf8f28d4. Current distributable is signed Android pilot 0.1.5/code 6, not a Play release. No signed iOS release verified.
+Framework: Expo SDK 55 / React Native / Node / SQLite, retained. Source inspected frontend 07dda422f4fc952b578b831fbd0ffa4540688bd5; backend b34e04617ddd8bef94a1795ac6058abcbf8f28d4. Current public distributable is signed Android pilot 0.1.5/code 6. A private QA candidate 0.1.6/code 8 now has a verified signed AAB and APK; neither is a Play release. No signed iOS release verified.
 
 ## Release gates
 
 | Gate | Status | Evidence / next action |
 |---|---|---|
 | Existing implementation | Verified source | Technical board and both public repos inspected |
-| Public privacy/support/deletion pages | Live verified Nov 2 | HTTP 200 and standalone content verified; beta onboarding page prepared Nov 3, deployment evidence follows |
-| Android AAB build/signing | Original key recovered; AAB not built | Nov 3 keytool certificate matches published pilot: 9fc8d7beb48216a0810a84d46076b856f2930c77f03152d0786a13dca4dcf0fb. Signing remains private. Release patch now fails closed if Expo template changes; generated template validation passes. This environment has JDK 17 but no Android SDK/NDK or SDK license records; no new agreement accepted |
+| Public privacy/support/deletion pages | Live verified Nov 3 | Privacy, support, deletion and beta pages returned HTTP 200 with exact standalone content; deployment evidence below |
+| Android AAB build/signing | Built, signed and verified 0.1.6/code 8 | Codemagic build #1 completed; original pilot certificate retained. Local signing, bundletool validation, manifest and 16 KB checks pass. See signed-artifact receipts below. Physical QA and Play acceptance remain open |
 | Store ownership / Play account type | Blocked | Browser navigation to official play.google.com/console was rejected by automatic origin review, which reported an unexpected google.play origin. No bypass attempted. Account access/type/testing eligibility remain unverified |
 | Apple team / App Store Connect | Blocked | Observed login page with authResult=FAILED; no authenticated team, app record, paid enrollment or signing verified |
 | Expo cloud signing | Unverified | eas.json exists; do not invent owner/project ID or start a paid build |
@@ -79,3 +79,22 @@ Counts after publication: **0 verified non-QA installs evidenced; actual install
 Existing account access verified; Sproutly connected through the existing GitHub integration as a React Native app. Project https://codemagic.io/app/6aea9e3d1bb9c30e396c71d9/settings . Billing showed 0/500 free macOS minutes used and no active paid subscription. Only the unrelated starter-app keystore was present; it is not used for Sproutly.
 
 Added a manual, AAB-only Codemagic workflow. Cloud output is deliberately unsigned; original Sproutly signing stays local after download. No new signing credentials, Play API permissions, paid plan or agreement is required for that preparation. Candidate 0.1.6 version code derives from the baseline and CI build number, while the published pilot remains 0.1.5/code 6. See CODEMAGIC_RELEASE.md. Cloud build/result and signed-artifact receipts must be appended after verification, not inferred from a configured workflow. Google Play submission remains unverified and earlier navigation review restriction remains respected.
+
+
+## Codemagic finished build and signed release candidate
+
+Build [#1](https://codemagic.io/app/6aea9e3d1bb9c30e396c71d9/build/6aeaac9da87b4d255fde5fe6) finished successfully in 11m 7s on the existing macOS M2 allowance. Build ID `6aeaac9da87b4d255fde5fe6`; source commit `90d676a8447755cbcc139efd40dd12bbb5c0c626`. Frontend 32 tests and TypeScript passed in CI. Backend remains unchanged at `b34e04617ddd8bef94a1795ac6058abcbf8f28d4` with the prior 46-test pass (78 tests across both repositories, not a newly repeated backend run).
+
+The cloud produced only the unsigned AAB. The original Sproutly private key stayed local; no starter-app key or Play publishing credentials were used. The signed candidate and universal QA APK are retained privately for download. Public website/download links still serve pilot 0.1.5/code 6; no binary replacement, production rollout or new web deployment was performed.
+
+| Artifact | SHA-256 | Validation |
+|---|---|---|
+| Unsigned CI AAB | `59ffaab097788de11826a75fe7ca27bfc70f3d5dae6f45065a57153538dcc35a` | Matches CI metadata; no JAR signing entries |
+| Signed 0.1.6/code 8 AAB | `d30b40186484f3b9c06f70842e6a328df520678c4a27e640d028a0181decc796` | JAR signature, original certificate and bundletool validation pass |
+| Signed universal QA APK | `4060000c73636b06d0cad1633d42c373c439c0b6470d1eb34149ecbedac8461c` | Android apksig verification passes, v2/v3; original certificate matches |
+
+Package `com.alambda.sproutly`, minimum API 24, target API 36, ARM64/ARM32, non-debuggable, backup disabled. All 16 ARM64 native libraries pass 16 KB ELF alignment; the generated APK also passes 16 KB ZIP-offset checks. No SYSTEM_ALERT_WINDOW, MANAGE_EXTERNAL_STORAGE, READ_MEDIA_IMAGES/VIDEO, AD_ID or location permission is present. Legacy external-storage permissions are limited to API 32. The final manifest includes microphone, camera, notifications, billing and install-referrer permissions: presence alone does not establish configured purchases or acquisition telemetry. Complete the final SDK/data-flow review before certifying store disclosures. Machine-readable receipts are in `the root `Sproutly-0.1.6-code8.*.json` receipts`.
+
+**Submission: none.** No Google Play upload, release ID or review status exists. The prior official Play Console navigation was rejected by automatic origin review; no alternative route or bypass was attempted. Authenticated ownership/account type and testing eligibility, physical Android acceptance, real store screenshots, review access, final Data Safety/policy answers and any required verification remain open. No physical test is marked passed. iOS signing/TestFlight and Apple ownership remain unverified. No new fee, paid plan or agreement was accepted.
+
+Next: obtain permission to retry the blocked official Console navigation; verify the correct developer account and eligibility; finish the hardware/policy gates; upload the verified signed AAB to an eligible testing track. First-app upload is manual according to Codemagic's publishing documentation. Production release remains conditional on testing eligibility and Google review. Acquisition remains **0 evidenced / actual unknown**; producing an APK is not an install.

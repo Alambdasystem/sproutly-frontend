@@ -70,3 +70,10 @@ See STORE_RELEASE_TRACKER.md and STORE_LISTING.md. Public privacy/support/accoun
 ## Release and acquisition preparation — November 3, 2026
 
 Original Android signing certificate recovered and verified privately; no new binary. Android release generation now stops on unrecognized signing templates; current Expo prebuild validates. Beta onboarding page and reviewed-evidence acquisition reporting added. 30 frontend + 46 backend tests pass (76 total), typecheck and web export pass. No store submission, physical acceptance or installed-user claim. See STORE_RELEASE_TRACKER.md and ACQUISITION.md for live evidence and gates.
+
+
+## Codemagic Android candidate — completed build #1
+
+Codemagic is connected to the existing React Native repository. Build `6aeaac9da87b4d255fde5fe6` finished successfully from `90d676a8447755cbcc139efd40dd12bbb5c0c626` in 11m 7s. It produced an unsigned AAB, then local signing retained the original Sproutly certificate. Signed 0.1.6/code 8 AAB and universal QA APK pass signature, manifest, bundletool and 16 KB checks; 32 frontend tests/typecheck passed in CI. Backend source remains unchanged with its prior 46-test pass. Original framework and public 0.1.5/code 6 download remain unchanged.
+
+Build preparation/signing is complete for this candidate. Open gates: physical Android microphone/speaker/camera/keyboard/install/update acceptance; Google Play ownership and testing eligibility; actual store screenshots, review account and final SDK/privacy/policy declarations. Official Play Console navigation remains blocked by automatic origin review, with no bypass. No store upload/review/approval exists. Apple ownership, signing and TestFlight also remain open. Acquisition stays zero evidenced / actual unknown. Exact artifact digests and submission status are in STORE_RELEASE_TRACKER.md; signing procedure in CODEMAGIC_RELEASE.md.

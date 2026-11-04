@@ -1,0 +1,25 @@
+{
+  "package": "com.alambda.sproutly",
+  "version": "0.1.6",
+  "versionCode": 8,
+  "sourceCommit": "90d676a8447755cbcc139efd40dd12bbb5c0c626",
+  "buildId": "6aeaac9da87b4d255fde5fe6",
+  "artifact": "Sproutly-0.1.6-code8.apk",
+  "bytes": 58197510,
+  "sha256": "4060000c73636b06d0cad1633d42c373c439c0b6470d1eb34149ecbedac8461c",
+  "derivedFromAabSha256": "d30b40186484f3b9c06f70842e6a328df520678c4a27e640d028a0181decc796",
+  "signature": {
+    "verified": true,
+    "certificateSha256": "9fc8d7beb48216a0810a84d46076b856f2930c77f03152d0786a13dca4dcf0fb",
+    "v1": false,
+    "v2": true,
+    "v3": true
+  },
+  "abis": [
+    "arm64-v8a",
+    "armeabi-v7a"
+  ],
+  "uncompressedArm64LibrariesZipAligned16Kb": 16,
+  "physicalDeviceQa": false,
+  "storeSubmission": null
+}

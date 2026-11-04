@@ -1,0 +1,11 @@
+{
+  "package": "com.alambda.sproutly",
+  "version": "0.1.6",
+  "versionCode": 8,
+  "sourceCommit": "90d676a8447755cbcc139efd40dd12bbb5c0c626",
+  "buildId": "6aeaac9da87b4d255fde5fe6",
+  "artifact": "Sproutly-0.1.6-code8-UNSIGNED.aab",
+  "sha256": "59ffaab097788de11826a75fe7ca27bfc70f3d5dae6f45065a57153538dcc35a",
+  "signature": "UNSIGNED \u2014 sign privately before any Play upload",
+  "physicalDeviceQa": false
+}

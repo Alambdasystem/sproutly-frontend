@@ -1,0 +1,217 @@
+{
+  "package": "com.alambda.sproutly",
+  "version": "0.1.6",
+  "versionCode": 8,
+  "sourceCommit": "90d676a8447755cbcc139efd40dd12bbb5c0c626",
+  "buildId": "6aeaac9da87b4d255fde5fe6",
+  "artifact": "Sproutly-0.1.6-code8.aab",
+  "sha256": "d30b40186484f3b9c06f70842e6a328df520678c4a27e640d028a0181decc796",
+  "signature": "verified \u2014 original Sproutly certificate",
+  "physicalDeviceQa": false,
+  "certificateSha256": "9fc8d7beb48216a0810a84d46076b856f2930c77f03152d0786a13dca4dcf0fb",
+  "unsignedSha256": "59ffaab097788de11826a75fe7ca27bfc70f3d5dae6f45065a57153538dcc35a",
+  "targetSdk": "36",
+  "minSdk": "24",
+  "permissions": [
+    {
+      "name": "android.permission.INTERNET",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.MODIFY_AUDIO_SETTINGS",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.READ_EXTERNAL_STORAGE",
+      "maxSdkVersion": "32"
+    },
+    {
+      "name": "android.permission.RECORD_AUDIO",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.VIBRATE",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.WRITE_EXTERNAL_STORAGE",
+      "maxSdkVersion": "32"
+    },
+    {
+      "name": "android.permission.CAMERA",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.RECEIVE_BOOT_COMPLETED",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.POST_NOTIFICATIONS",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.ACCESS_NETWORK_STATE",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.WAKE_LOCK",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.google.android.c2dm.permission.RECEIVE",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.USE_BIOMETRIC",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.USE_FINGERPRINT",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.android.vending.BILLING",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.alambda.sproutly.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.sec.android.provider.badge.permission.READ",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.sec.android.provider.badge.permission.WRITE",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.htc.launcher.permission.READ_SETTINGS",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.htc.launcher.permission.UPDATE_SHORTCUT",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.sonyericsson.home.permission.BROADCAST_BADGE",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.sonymobile.home.permission.PROVIDER_INSERT_BADGE",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.anddoes.launcher.permission.UPDATE_COUNT",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.majeur.launcher.permission.UPDATE_BADGE",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.huawei.android.launcher.permission.CHANGE_BADGE",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.huawei.android.launcher.permission.READ_SETTINGS",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.huawei.android.launcher.permission.WRITE_SETTINGS",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "android.permission.READ_APP_BADGE",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.oppo.launcher.permission.READ_SETTINGS",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "com.oppo.launcher.permission.WRITE_SETTINGS",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "me.everything.badger.permission.BADGE_COUNT_READ",
+      "maxSdkVersion": null
+    },
+    {
+      "name": "me.everything.badger.permission.BADGE_COUNT_WRITE",
+      "maxSdkVersion": null
+    }
+  ],
+  "arm64Libraries16Kb": [
+    {
+      "library": "libappmodules.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libc++_shared.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libdatastore_shared_counter.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libexpo-modules-core.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libfbjni.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libgifimage.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libhermestooling.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libhermesvm.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libimagepipeline.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libjsi.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libnative-filters.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libnative-imagetranscoder.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libreact_codegen_rnsvg.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libreact_codegen_safeareacontext.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libreactnative.so",
+      "minimumLoadAlignment": 16384
+    },
+    {
+      "library": "libstatic-webp.so",
+      "minimumLoadAlignment": 16384
+    }
+  ],
+  "bundletoolValidated": true,
+  "storeSubmission": null
+}
