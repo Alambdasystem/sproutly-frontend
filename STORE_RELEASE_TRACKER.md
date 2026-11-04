@@ -73,3 +73,9 @@ Verified public organic publications (posted once after campaign/recent-post che
 Both describe the web/direct Android pilot, invite 20 volunteer growers and accurately state store/hardware preparation. Full copy and author verified at each public permalink. No DMs, unsolicited invitations, paid boosting or group-form bypass. Social campaign publication records updated to prevent duplicates; no general publishing schedule changed.
 
 Counts after publication: **0 verified non-QA installs evidenced; actual installed population unknown**. APK downloads unknown, store reports unavailable, voluntary beta enrollments unmeasured. Publishing reach is not an install. ACQUISITION_STATUS.json remains a zero-observation baseline. Next measurable step is opt-in beta evidence review and real-device acceptance; do not fill the ledger with demo/test observations.
+
+## Codemagic connection — November 3 evening
+
+Existing account access verified; Sproutly connected through the existing GitHub integration as a React Native app. Project https://codemagic.io/app/6aea9e3d1bb9c30e396c71d9/settings . Billing showed 0/500 free macOS minutes used and no active paid subscription. Only the unrelated starter-app keystore was present; it is not used for Sproutly.
+
+Added a manual, AAB-only Codemagic workflow. Cloud output is deliberately unsigned; original Sproutly signing stays local after download. No new signing credentials, Play API permissions, paid plan or agreement is required for that preparation. Candidate 0.1.6 version code derives from the baseline and CI build number, while the published pilot remains 0.1.5/code 6. See CODEMAGIC_RELEASE.md. Cloud build/result and signed-artifact receipts must be appended after verification, not inferred from a configured workflow. Google Play submission remains unverified and earlier navigation review restriction remains respected.

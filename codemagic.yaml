@@ -1,0 +1,28 @@
+workflows:
+  sproutly-android-bundle:
+    name: Sproutly Android AAB — private signing after download
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      node: 24.22.1
+      java: 17
+      vars:
+        SPROUTLY_RELEASE_VERSION: "0.1.6"
+        EXPO_PUBLIC_API_URL: "https://sproutly-backend-neva.onrender.com"
+    cache:
+      cache_paths:
+        - $HOME/.gradle/caches
+        - $HOME/.gradle/wrapper
+    scripts:
+      - name: Install locked dependencies
+        script: npm ci --include=dev
+      - name: Validate frontend
+        script: npm test && npm run typecheck
+      - name: Build unsigned Android App Bundle
+        script: node build-android-bundle.mjs
+    artifacts:
+      - release-candidate/*.aab
+      - release-candidate/bundle-build.json
+# Manual runs only. No publishing or private signing credentials on the CI service.
+# Download, verify, sign locally with the recovered Sproutly certificate, validate
+# the final bundle, then perform the first Play Console upload when account gates pass.
