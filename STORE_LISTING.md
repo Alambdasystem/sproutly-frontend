@@ -40,7 +40,7 @@ Support: https://sproutly-frontend.onrender.com/support.html
 Account deletion: https://sproutly-frontend.onrender.com/delete-account.html
 Marketing/app: https://sproutly-frontend.onrender.com/
 
-These URLs are implementation targets until live HTTP and rendered-page checks pass.
+These URLs were live-verified November 3 and returned HTTP 200 with expected standalone content again November 4; see release-readiness-2026-11-04.json. Final policy certification is separate.
 
 ## Data inventory for disclosure review — not certified answers
 
@@ -54,7 +54,7 @@ These URLs are implementation targets until live HTTP and rendered-page checks p
 | Session / credentials | Authentication; native secure storage | Validate transport/storage and account deletion |
 | Request IDs, status, duration | Operations logs without request bodies | Determine applicable diagnostics disclosures |
 | RevenueCat/store adapter | Present, paid pilot enforcement off | Audit final SDK startup/network behavior; do not infer zero SDK data from disabled billing |
-| Acquisition measurement | Not yet implemented | No connected analytics SDK or verified store install totals claimed |
+| Acquisition measurement | Private reviewed-evidence reporting implemented; automatic telemetry unconnected | ACQUISITION.md; downloads, provisional launches and verified installs remain separate; zero observations evidenced |
 
 ## Review instructions to complete privately
 
@@ -63,3 +63,6 @@ Provide a dedicated non-admin account and durable password through the store’s
 ## Screenshot shot list — actual device captures required
 
 Home/personal garden; Plant Doctor Photos & context with unobscured Continue; saved care guidance; live dictation/call controls; seed project milestones; journal. Capture supported phone/tablet sizes from the signed release. Do not create fictional UI screenshots or label desktop views as iPhone captures.
+
+
+Source-based privacy worksheet: STORE_PRIVACY_REVIEW.md. Physical acceptance and reviewer evidence checklist: DEVICE_RELEASE_ACCEPTANCE.md. Both are preparation, not store certification or passed hardware results.

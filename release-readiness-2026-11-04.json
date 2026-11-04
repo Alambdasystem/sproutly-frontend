@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-11-04T21:45:30.420388+00:00",
+  "checks": [
+    {
+      "url": "https://sproutly-frontend.onrender.com/privacy.html",
+      "status": 200,
+      "expectedContent": true
+    },
+    {
+      "url": "https://sproutly-frontend.onrender.com/support.html",
+      "status": 200,
+      "expectedContent": true
+    },
+    {
+      "url": "https://sproutly-frontend.onrender.com/delete-account.html",
+      "status": 200,
+      "expectedContent": true
+    },
+    {
+      "url": "https://sproutly-frontend.onrender.com/beta.html",
+      "status": 200,
+      "expectedContent": true
+    },
+    {
+      "url": "https://sproutly-backend-neva.onrender.com/health",
+      "status": 200,
+      "expectedContent": true
+    }
+  ]
+}

@@ -98,3 +98,14 @@ Package `com.alambda.sproutly`, minimum API 24, target API 36, ARM64/ARM32, non-
 **Submission: none.** No Google Play upload, release ID or review status exists. The prior official Play Console navigation was rejected by automatic origin review; no alternative route or bypass was attempted. Authenticated ownership/account type and testing eligibility, physical Android acceptance, real store screenshots, review access, final Data Safety/policy answers and any required verification remain open. No physical test is marked passed. iOS signing/TestFlight and Apple ownership remain unverified. No new fee, paid plan or agreement was accepted.
 
 Next: obtain permission to retry the blocked official Console navigation; verify the correct developer account and eligibility; finish the hardware/policy gates; upload the verified signed AAB to an eligible testing track. First-app upload is manual according to Codemagic's publishing documentation. Production release remains conditional on testing eligibility and Google review. Acquisition remains **0 evidenced / actual unknown**; producing an APK is not an install.
+
+
+## November 4 readiness review
+
+Re-inspected frontend fcd12c2900998e06d26740d8add6801b3889e801 and backend b34e04617ddd8bef94a1795ac6058abcbf8f28d4: no intervening implementation changes. Preserved the completed signed 0.1.6/code 8 build and existing 32 frontend/46 backend test evidence; no redundant rebuild or new physical-test claim.
+
+Privacy, support, deletion and beta URLs plus API health returned HTTP 200 with expected content (release-readiness-2026-11-04.json). Corrected stale listing notes about public URLs and the implemented private acquisition reporter. Added STORE_PRIVACY_REVIEW.md with source-specific data flows, RevenueCat configuration caveat, provider-retention questions and backup-rotation caveat; added DEVICE_RELEASE_ACCEPTANCE.md with separate unexecuted Android/iPhone cases and review-access requirements. No data-safety certification, SDK traffic test or actual device screenshot claimed.
+
+Remaining external gates: permission for the google.play/business redirect previously rejected by automatic origin review, authenticated Play ownership/type/eligibility; authorized Apple team/bundle signing; physical phones/test evidence; final policy/privacy answers and review credentials. No bypass, account enrollment, fees, agreements, app submission or duplicate social publication. Earlier LinkedIn group-form reload restriction remains respected.
+
+No new participant/install evidence supplied. Verified non-QA installs evidenced remain 0; actual installed population and downloads unknown. Targets remain 20 beta volunteers, 50 installs, 100 installs, not achieved counts. Further store work depends on the access and hardware gates above.
